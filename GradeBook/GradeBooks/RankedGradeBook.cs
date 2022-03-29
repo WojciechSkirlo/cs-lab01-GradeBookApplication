@@ -42,13 +42,29 @@ namespace GradeBook.GradeBooks
             }
             if (studentsQty < 5)
             {
-                Console.WriteLine("Ranked grading requires at least 5 students");
+                Console.WriteLine("Ranked grading requires at least 5 students.");
             }
             else
             {
                 base.CalculateStatistics();
             }
+        }
 
+        public override void CalculateStudentStatistics(string name)
+        {
+            int studentsQty = 0;
+            foreach (var student in Students)
+            {
+                studentsQty++;
+            }
+            if (studentsQty < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students.");
+            }
+            else
+            {
+                base.CalculateStudentStatistics(name);
+            }
         }
     }
 }
