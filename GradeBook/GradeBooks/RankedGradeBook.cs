@@ -11,11 +11,15 @@ namespace GradeBook.GradeBooks
         }
         public override char GetLetterGrade(double averageGrade)
         {
-            //foreach (var student in Students)
-            //{
-            //    if()
-            //    Console.WriteLine("{0} : {1} : {2}", student.Name, student.Type, student.Enrollment);
-            //}
+            int studentsQty = 0;
+            foreach (var student in Students)
+            {
+                studentsQty++;
+            }
+            if (studentsQty < 5)
+            {
+                throw new InvalidOperationException();
+            }
 
             if (averageGrade >= 80)
                 return 'A';
@@ -31,6 +35,19 @@ namespace GradeBook.GradeBooks
 
         public override void CalculateStatistics()
         {
+            int studentsQty = 0;
+            foreach (var student in Students)
+            {
+                studentsQty++;
+            }
+            if (studentsQty < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students");
+            }
+            else
+            {
+                base.CalculateStatistics();
+            }
 
         }
     }
